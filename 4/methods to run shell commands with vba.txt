@@ -1,0 +1,39 @@
+'using Shell method
+Sub Document_Open()
+	MyMacro
+End Sub
+'Sub AutoOpen()
+'	MyMacro
+'End Sub
+Sub MyMacro()
+	Dim yoo As String
+	yoo = "cmd.exe"
+	Shell yoo
+End Sub
+
+
+
+'Using ShellExecute API
+
+Declare PtrSafe Function ShellExecute Lib "shell32.dll" _
+    Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, _
+    ByVal lpFile As String, ByVal lpParameters As String, _
+    ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Sub RunWithShellExecute()
+    ShellExecute 0, "open", "calc.exe", vbNullString, vbNullString, 1
+End Sub
+
+'Using WinExec API
+
+Declare PtrSafe Function WinExec Lib "kernel32" (ByVal lpCmdLine As String, ByVal nCmdShow As Long) As Long
+Sub RunWithWinExec()
+    WinExec "calc.exe", 1
+End Sub
+
+
+'Using Rundll32.exe
+
+Sub RunWithRundll32()
+    Shell "rundll32.exe url.dll,FileProtocolHandler calc.exe"
+End Sub
+
