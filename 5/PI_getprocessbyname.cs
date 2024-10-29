@@ -22,7 +22,8 @@ namespace Inject
         {
             int pid = 0;
             Process[] processes = Process.GetProcessesByName("notepad");
-
+//Trouble shooting tip if system.diagnostics.dll is missing 
+            //Install-Package System.Diagnostics.DiagnosticSource run this in nu pkg concole
             if (processes.Length == 0)
             {
                 Console.WriteLine("[!] Unable to find process to inject into!");
